@@ -441,7 +441,6 @@ def pytest_parametrized(session, coverage, transport, crypto):
         REPO_ROOT,
         "--log-file={}".format(RUNTESTS_LOGFILE),
         "--log-file-level=debug",
-        "--no-print-logs",
         "-ra",
         "-s",
         "--transport={}".format(transport),
@@ -583,7 +582,6 @@ def pytest_cloud(session, coverage):
         REPO_ROOT,
         "--log-file={}".format(RUNTESTS_LOGFILE),
         "--log-file-level=debug",
-        "--no-print-logs",
         "-ra",
         "-s",
         "--run-expensive",
@@ -606,7 +604,6 @@ def pytest_tornado(session, coverage):
         REPO_ROOT,
         "--log-file={}".format(RUNTESTS_LOGFILE),
         "--log-file-level=debug",
-        "--no-print-logs",
         "-ra",
         "-s",
     ] + session.posargs
