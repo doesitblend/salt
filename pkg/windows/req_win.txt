@@ -1,2 +1,4 @@
-pywin32==224
+# This is a hack just so we can compile static requirements for now
+pywin32==224; python_version < "3.8"
+
 WMI==1.4.9
