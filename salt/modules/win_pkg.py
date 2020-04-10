@@ -1616,6 +1616,9 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
                     include_pat=None,
                     exclude_pat="E@init.sls$",
                 )
+            elif cache_dir:
+                raise CommandExecutionError(
+                    "cache_dir is enabled in package definition, but is only supported by the salt: protocol")
 
             # Check to see if the cache_file is cached... if passed
             if cache_file and cache_file.startswith("salt:"):
@@ -1636,7 +1639,9 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
                         log.error("Unable to cache %s", cache_file)
                         ret[pkg_name] = {"failed to cache cache_file": cache_file}
                         continue
-
+            elif cache_file:
+                raise CommandExecutionError(
+                    "cache_file is enabled in package definition, but is only supported by the salt: protocol")
             # Check to see if the installer is cached
             cached_pkg = __salt__["cp.is_cached"](installer, saltenv)
             if not cached_pkg:
